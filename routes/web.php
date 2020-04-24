@@ -20,4 +20,6 @@ Route::get('/cart', 'CartController@index')->name('cart');
 Route::get('/checkout', 'CartController@checkout')->name('checkout');
 Route::get('/confirmation', 'CartController@confirmation')->name('confirmation');
 Route::get('/history', 'CartController@history')->name('history');
+Route::get('/products', 'ProductController@index');
+Route::get('/products/all', 'ProductController@all');
 Auth::routes();
