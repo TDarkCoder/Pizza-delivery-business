@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -32,11 +32,6 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
@@ -68,11 +63,21 @@
                             </li>
                         @endguest
                     </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="" class="text-decoration-none">
+                                <img src="{{ asset('img/icons/cart.svg') }}" alt="{{ __('Shopping cart') }}" width="25">
+                                <sup class="text-danger"><strong>1</strong></sup>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-5 mt-5">
             @yield('content')
         </main>
     </div>

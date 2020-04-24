@@ -1,100 +1,459 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-    <title>Laravel</title>
+@section('content')
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-    <!-- Styles -->
-    <style>
-        html, body {
-            background-color: #fff;
-            color: #636b6f;
-            font-family: 'Nunito', sans-serif;
-            font-weight: 200;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .full-height {
-            height: 100vh;
-        }
-
-        .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
-
-        .position-ref {
-            position: relative;
-        }
-
-        .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
-        }
-
-        .content {
-            text-align: center;
-        }
-
-        .title {
-            font-size: 84px;
-        }
-
-        .links > a {
-            color: #636b6f;
-            padding: 0 25px;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: .1rem;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        .m-b-md {
-            margin-bottom: 30px;
-        }
-    </style>
-</head>
-<body>
-<div class="flex-center position-ref full-height">
-    @if (Route::has('login'))
-        <div class="top-right links">
-            @auth
-                <a href="{{ url('/home') }}">Home</a>
-            @else
-                <a href="{{ route('login') }}">Login</a>
-
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}">Register</a>
-                @endif
-            @endauth
-        </div>
-    @endif
-
-    <div class="content">
-        <div class="title m-b-md">
-            Laravel
-        </div>
-
-        <div class="links">
-            <a href="https://laravel.com/docs">Docs</a>
-            <a href="https://laracasts.com">Laracasts</a>
-            <a href="https://laravel-news.com">News</a>
-            <a href="https://blog.laravel.com">Blog</a>
-            <a href="https://nova.laravel.com">Nova</a>
-            <a href="https://forge.laravel.com">Forge</a>
-            <a href="https://vapor.laravel.com">Vapor</a>
-            <a href="https://github.com/laravel/laravel">GitHub</a>
-        </div>
+    <div class="container bg-white border p-3 rounded">
+        <header>
+            <h2 class="text-center">{{ __('Our menu') }}</h2>
+        </header>
+        <hr>
+        <section class="menu-section">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Margarita</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/1.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Quattro Stagioni</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/2.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Marinara</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/3.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Carbonara</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/4.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/eye.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Frutti di Mare</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/5.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Quattro Formaggi</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/6.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Crudo</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/7.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Napoli</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/8.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Pugliese</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/9.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Montanara</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/10.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Emiliana</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/11.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Romana</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/1.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Fattoria</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/2.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Schiacciata</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/3.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Prosciutto</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/4.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Americana</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/5.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Prosciutto e Funghi</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/6.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Braccio di Ferro</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/7.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Sarda</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/8.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Tonno</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/9.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Valtellina</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/10.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 my-2">
+                    <article class="px-2 border rounded">
+                        <header class="py-3 text-center border-bottom">
+                            <h5 class="mb-0">Gorgonzola</h5>
+                        </header>
+                        <article class="pt-3">
+                            <img src="{{ asset('img/pizzas/11.png') }}" alt="{{ __('Pizza 1') }}" width="100%">
+                            <div class="row align-items-center mx-0 py-3">
+                                <div class="col-7 text-left">
+                                    <span><strong>25.00$</strong></span>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <button class="btn btn-light" type="button">
+                                        <img src="{{ asset('img/icons/add-to-cart.svg')  }}" alt="{{ __('Add to cart') }}" width="20">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </article>
+                </div>
+            </div>
+            <div class="text-center mb-2 mt-3">
+                <button class="btn btn-primary">{{ __('More') }}</button>
+            </div>
+        </section>
     </div>
-</div>
-</body>
-</html>
+
+@endsection
