@@ -18,4 +18,5 @@ Route::get('/', function () {
 });
 Route::get('/cart', 'CartController@index')->name('cart');
 Route::get('/checkout', 'CartController@checkout')->name('checkout');
+Route::get('/confirmation', 'CartController@confirmation')->name('confirmation');
 Auth::routes();

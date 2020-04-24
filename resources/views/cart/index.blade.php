@@ -7,7 +7,7 @@
             <h3 class="text-center">{{ __('Shopping cart') }}</h3>
         </header>
         <div class="table-responsive">
-            <table class="table shopping-cart-table">
+            <table class="table">
                 <tr>
                     <th>Action</th>
                     <th>Pizza</th>
