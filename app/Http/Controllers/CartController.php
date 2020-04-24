@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CartStoreRequest;
+use App\Services\CartService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -21,4 +24,9 @@ class CartController extends Controller
     public function history(){
         return view('cart.history');
     }
+
+    public function store(CartStoreRequest $request){
+        return Auth::check() ? CartService::storeInDB($request) : CartService::storeInCookies($request);
+    }
+
 }

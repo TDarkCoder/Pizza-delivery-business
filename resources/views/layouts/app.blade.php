@@ -69,7 +69,15 @@
                         <li class="nav-item">
                             <a href="{{ route('cart') }}" class="text-decoration-none">
                                 <img src="{{ asset('img/icons/cart.svg') }}" alt="{{ __('Shopping cart') }}" width="25">
-                                <sup class="text-danger"><strong>3</strong></sup>
+                                <sup class="text-danger">
+                                    <strong id="cart-counter">
+                                        @auth
+                                            {{ auth()->user()->cart ? auth()->user()->cart->products->count() : 0 }}
+                                        @else
+                                            {{ request()->cookie('products') ? unserialize(request()->cookie('products'))->count() : 0 }}
+                                        @endauth
+                                    </strong>
+                                </sup>
                             </a>
                         </li>
                     </ul>

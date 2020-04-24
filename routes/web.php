@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,10 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/cart', 'CartController@index')->name('cart');
+Route::prefix('cart')->group(function(){
+    Route::get('/', 'CartController@index')->name('cart');
+    Route::post('/', 'CartController@store')->name('cart.store');
+});
 Route::get('/checkout', 'CartController@checkout')->name('checkout');
 Route::get('/confirmation', 'CartController@confirmation')->name('confirmation');
 Route::get('/history', 'CartController@history')->name('history');
-Route::get('/products', 'ProductController@index');
-Route::get('/products/all', 'ProductController@all');
+Route::prefix('products')->group(function() {
+    Route::get('/', 'ProductController@index');
+    Route::get('/all', 'ProductController@all');
+});
 Auth::routes();
