@@ -4,7 +4,7 @@
 
     <div class="container bg-white border p-3 rounded">
         <header>
-            <h2 class="text-center">{{ __('Our menu') }}</h2>
+            <h3 class="text-center">{{ __('Our menu') }}</h3>
         </header>
         <hr>
         <section class="menu-section">
