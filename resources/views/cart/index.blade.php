@@ -66,7 +66,7 @@
             </table>
             <div class="text-right p-2">
                 <h5 class="mb-3">{{ __('Total price') }}: 150.00$</h5>
-                <a href="" class="btn btn-outline-success">{{ __('Place order') }}</a>
+                <a href="{{ route('checkout') }}" class="btn btn-outline-success">{{ __('Place order') }}</a>
             </div>
         </div>
     </div>

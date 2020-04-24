@@ -17,4 +17,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/cart', 'CartController@index')->name('cart');
+Route::get('/checkout', 'CartController@checkout')->name('checkout');
 Auth::routes();

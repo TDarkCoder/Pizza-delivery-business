@@ -69,7 +69,7 @@
                         <li class="nav-item">
                             <a href="{{ route('cart') }}" class="text-decoration-none">
                                 <img src="{{ asset('img/icons/cart.svg') }}" alt="{{ __('Shopping cart') }}" width="25">
-                                <sup class="text-danger"><strong>1</strong></sup>
+                                <sup class="text-danger"><strong>3</strong></sup>
                             </a>
                         </li>
                     </ul>
