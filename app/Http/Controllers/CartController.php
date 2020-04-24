@@ -17,4 +17,8 @@ class CartController extends Controller
     public function confirmation(){
         return view('cart.confirmation');
     }
+
+    public function history(){
+        return view('cart.history');
+    }
 }

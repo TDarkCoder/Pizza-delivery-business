@@ -62,6 +62,9 @@
                                 </div>
                             </li>
                         @endguest
+                        <li class="nav-item">
+                            <a href="{{ route('history') }}" class="nav-link">{{ __('My orders') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
