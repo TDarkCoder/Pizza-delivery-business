@@ -30,9 +30,10 @@ class CookieCartService implements CartServiceContract
     public function open(){
 
         $cart = $this->getCookies();
-        $products = Product::whereIn('id', $cart->pluck('product_id'))
+
+        $products = $cart->count() > 0 ? Product::whereIn('id', $cart->pluck('product_id'))
             ->orderByRaw(DB::raw("FIELD(id, ".implode(',', $cart->pluck('product_id')->toArray()).")"))
-            ->get();
+            ->get() : [];
 
         return  $cart->map(fn($product) => collect($product)->merge(['product' => $products->where('id', $product['product_id'])->first()]));
 

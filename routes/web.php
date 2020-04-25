@@ -28,10 +28,10 @@ Route::prefix('products')->group(function() {
     Route::get('/all', 'ProductController@all');
 });
 Route::prefix('order')->group(function(){
+    Route::get('/history', 'OrderController@index')->name('history');
     Route::get('/confirmation', 'CartController@confirmation')->name('confirmation')->middleware(['auth', 'order.confirmation']);
     Route::post('/', 'OrderController@store')->name('order.store');
     Route::post('{order}', 'OrderController@update')->name('order.update');
 });
 Route::get('/checkout', 'CartController@checkout')->name('checkout')->middleware('checkout');
-Route::get('/history', 'CartController@history')->name('history');
 Auth::routes();

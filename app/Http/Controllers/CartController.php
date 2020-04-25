@@ -21,10 +21,6 @@ class CartController extends Controller
         return view('cart.confirmation', compact('order'));
     }
 
-    public function history(){
-        return view('cart.history');
-    }
-
     public function store(CartServiceContract $cart, CartStoreRequest $request){
         return $cart->store($request);
     }

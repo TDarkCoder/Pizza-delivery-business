@@ -3,6 +3,11 @@
 @section('content')
 
     <div class="container bg-white border rounded p-3">
+        @if(session()->has('message'))
+            <div class="alert alert-warning">
+                <span>{{ session()->get('message') }}</span>
+            </div>
+        @endif
         <header>
             <h3 class="text-center">{{ __('Order confirmation') }}</h3>
         </header>
