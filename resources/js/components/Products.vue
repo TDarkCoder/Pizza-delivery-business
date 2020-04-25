@@ -94,7 +94,7 @@
 
 </script>
 
-<style scoped>
+<style>
 
     .loading-icon{
         animation: 2s rotate linear infinite;

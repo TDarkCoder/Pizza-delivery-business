@@ -2,7 +2,8 @@
 
 namespace App\Http\Middleware;
 
-use App\Services\CartService;
+use App\Providers\RouteServiceProvider;
+use App\Services\DatabaseCartService;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
@@ -21,9 +22,9 @@ class CartCookieMiddleware
 
         if(Auth::check() && Cookie::get('products')){
 
-            collect(unserialize(Cookie::get('products')))->each(fn($product) => CartService::storeInDB(collect($product)));
+            collect(unserialize(Cookie::get('products')))->each(fn($product) => (new DatabaseCartService())->store((object)$product));
             $cookies = Cookie::forget('products');
-            return $next($request)->withCookie($cookies);
+            return redirect(RouteServiceProvider::HOME)->withCookie($cookies);
 
         }
 

@@ -19,7 +19,9 @@ Route::get('/', function () {
 });
 Route::prefix('cart')->group(function(){
     Route::get('/', 'CartController@index')->name('cart');
+    Route::get('/user', 'CartController@show')->name('cart.show');
     Route::post('/', 'CartController@store')->name('cart.store');
+    Route::delete('{product_id}', 'CartController@destroy')->name('cart.destroy');
 });
 Route::get('/checkout', 'CartController@checkout')->name('checkout');
 Route::get('/confirmation', 'CartController@confirmation')->name('confirmation');
