@@ -22,9 +22,16 @@ class CartCookieMiddleware
 
         if(Auth::check() && Cookie::get('products')){
 
-            collect(unserialize(Cookie::get('products')))->each(fn($product) => (new DatabaseCartService())->store((object)$product));
-            $cookies = Cookie::forget('products');
-            return redirect(RouteServiceProvider::HOME)->withCookie($cookies);
+            $cart = Auth::user()->cart ?? Auth::user()->cart()->create();
+
+            collect(unserialize(Cookie::get('products')))->each(function($product) use ($cart){
+                $cart->products->contains('product_id', $product['product_id'])
+                    ? $cart->products->where('product_id', $product['product_id'])->first()->update(['quantity' => $product['quantity']])
+                    : $cart->products()->create(collect($product)->all());
+                });
+
+                $cookies = Cookie::forget('products');
+                return redirect(RouteServiceProvider::HOME)->withCookie($cookies);
 
         }
 

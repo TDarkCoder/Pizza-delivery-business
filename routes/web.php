@@ -23,11 +23,15 @@ Route::prefix('cart')->group(function(){
     Route::post('/', 'CartController@store')->name('cart.store');
     Route::delete('{product_id}', 'CartController@destroy')->name('cart.destroy');
 });
-Route::get('/checkout', 'CartController@checkout')->name('checkout');
-Route::get('/confirmation', 'CartController@confirmation')->name('confirmation');
-Route::get('/history', 'CartController@history')->name('history');
 Route::prefix('products')->group(function() {
     Route::get('/', 'ProductController@index');
     Route::get('/all', 'ProductController@all');
 });
+Route::prefix('order')->group(function(){
+    Route::get('/confirmation', 'CartController@confirmation')->name('confirmation')->middleware(['auth', 'order.confirmation']);
+    Route::post('/', 'OrderController@store')->name('order.store');
+    Route::post('{order}', 'OrderController@update')->name('order.update');
+});
+Route::get('/checkout', 'CartController@checkout')->name('checkout')->middleware('checkout');
+Route::get('/history', 'CartController@history')->name('history');
 Auth::routes();

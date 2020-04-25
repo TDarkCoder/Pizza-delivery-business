@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\CartProduct;
 use App\Http\Requests\CartStoreRequest;
 use App\Services\Contracts\CartServiceContract;
-use App\Services\CookieCartService;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
@@ -14,12 +12,13 @@ class CartController extends Controller
         return view('cart.index');
     }
 
-    public function checkout(){
-        return view('cart.checkout');
+    public function checkout(CartServiceContract $cart){
+        return view('cart.checkout', ['products' => $products = $cart->open()]);
     }
 
     public function confirmation(){
-        return view('cart.confirmation');
+        $order = Auth::user()->orders->whereNull('status')->first()->load('products.product');
+        return view('cart.confirmation', compact('order'));
     }
 
     public function history(){

@@ -10,7 +10,7 @@ class Product extends Model
     protected $guarded = [];
 
     public function format(){
-        return collect($this)->put('saved', $this->carts->contains('cart_id', Auth::user()->cart->id));
+        return collect($this)->put('saved', Auth::user()->cart ? $this->carts->contains('cart_id', Auth::user()->cart->id) : false);
     }
 
     public function formatFromCookies(){
