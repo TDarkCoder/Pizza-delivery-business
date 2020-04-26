@@ -25,5 +25,5 @@
     </li>
 </ol>
 
-<h6>To see the result, you can click <a href="https://pizza.darkcoder.uz">here</a>. Good luck! </h6>  
+<h6>To see the result, you can click <a href="http://delivery.darkcoder.uz">here</a>. Good luck! </h6>  
   
